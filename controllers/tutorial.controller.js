@@ -1,5 +1,6 @@
-const Tutorial = require('../models');
-const Op = require('../models').sequelize.Op
+// const db = require("../models/tutorial");
+const Tutorial = require("../models").Tutorial;
+const Op = require("../models").Sequelize.Op;
 
 exports.create = (req, res) => {
     // Validate request
@@ -9,14 +10,14 @@ exports.create = (req, res) => {
       });
       return;
     }
-  
+    
     // Create a Tutorial
     const tutorial = {
       title: req.body.title,
       description: req.body.description,
       published: req.body.published ? req.body.published : false
     };
-  
+
     // Save Tutorial in the database
     Tutorial.create(tutorial)
       .then(data => {
