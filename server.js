@@ -8,12 +8,15 @@ var corsOptions = {
     origin: "http://localhost:8081"
 };
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 //simple route
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to bezkoder application." });
+  res.sendFile('home.html', {
+    root: './views'
+  });
 });
 require("./routes/tutorial.routes")(app);
 
